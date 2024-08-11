@@ -1,0 +1,55 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = ''' 󰡨 $directory $git_branch ($git_state )$git_status $fill $aws $python
+ $character'''
+
+add_newline = true
+
+[character]
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+
+[fill]
+symbol = ' '
+
+[directory]
+style = 'bright-cyan'
+truncation_symbol = '.../'
+truncation_length = 10
+truncate_to_repo = false
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style)'
+style = 'bright-purple'
+
+[git_state]
+style = 'bright-yellow'
+
+[git_status]
+style = 'bright-red'
+format = '([($conflicted )($stashed )($deleted )($renamed )($modified )($staged )($untracked )($ahead_behind )]($style) )'
+conflicted = '=$count'
+ahead = '⇡$count'
+behind = '⇣$count'
+untracked = '?$count'
+stashed = '*$count'
+modified = '!$count'
+staged = '+$count'
+renamed = '»$count'
+deleted = '✘$count'
+
+[golang]
+format = '[$symbol($version )]($style)'
+symbol = ' '
+style = 'bright-cyan'
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = ' '
+style = 'bright-yellow'
+
+[aws]
+force_display = true
+style = '#ff9900'
+format = '[( $profile )(\[$duration\] )]($style)'
